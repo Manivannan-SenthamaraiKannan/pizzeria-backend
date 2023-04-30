@@ -31,7 +31,6 @@ app.get("/", (req, res) => {
 
 app.use("/products", productsRouter);
 app.use("/pizzabase", PizzaBaseRouter);
-app.use("/pizzasauce", PizzaSauceRouter);
 
 app.listen(PORT, () =>
   console.log("Server started on PORT", PORT)
