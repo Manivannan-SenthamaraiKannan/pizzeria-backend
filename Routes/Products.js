@@ -24,8 +24,7 @@ router.get("/", async (req, res) => {
 
 //get products by ID
 router.get("/:id", async (req, res) => {
-    const { id } = req.params;
-    console.log(id);
+    const id = parseInt(req.params.id)
     const result = await client
         .db("products")
         .collection("pizzas")
@@ -35,23 +34,23 @@ router.get("/:id", async (req, res) => {
         : res.status(404).send({ message: "No product found" });
 });
 
-//delete products by ID
+// //delete products by ID
 
-router.delete("/:id", async (req, res) => {
-    const { id } = req.params;
-    console.log(id);
-    const result = await client
-        .db("products")
-        .collection("pizzas")
-        .deleteOne({ id: id });
-    result
-        ? res.send(result)
-        : res.status(404).send({ message: "No product found" });
-});
+// router.delete("/:id", async (req, res) => {
+//     const id = parseInt(req.params.id)
+//     console.log(id);
+//     const result = await client
+//         .db("products")
+//         .collection("pizzas")
+//         .deleteOne({ id: id });
+//     result
+//         ? res.send(result)
+//         : res.status(404).send({ message: "No product found" });
+// });
 
 //update product by ID
 router.put("/:id", async (req, res) => {
-    const { id } = req.params;
+    const id = parseInt(req.params.id)
     const updatedProducts = req.body;
     const result = await client
         .db("products")

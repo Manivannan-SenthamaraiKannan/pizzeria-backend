@@ -3,9 +3,12 @@ import * as dotenv from "dotenv";
 import { MongoClient } from "mongodb";
 import cors from "cors";
 import { productsRouter } from "./Routes/Products.js";
+import { PizzaBaseRouter } from "./Routes/PizzaBase.js";
+import { PizzaSauceRouter } from "./Routes/PizzaSauce.js";
+
 const app = express();
 dotenv.config();
-app.use(express.json()); 
+app.use(express.json());
 app.use(cors());
 
 const PORT = 8000;
@@ -27,5 +30,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/products", productsRouter);
+app.use("/pizzabase", PizzaBaseRouter);
+app.use("/pizzasauce", PizzaSauceRouter);
 
-app.listen(PORT, () => console.log("Server started on PORT", PORT));
+app.listen(PORT, () =>
+  console.log("Server started on PORT", PORT)
+);
